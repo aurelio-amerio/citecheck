@@ -1,0 +1,15 @@
+{
+  "title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
+  "abstract": "In this thesis, we examined the possibilities offered by multi-messenger astronomy in the context of indirect dark matter detection. We have applied a multi-wavelength strategy by studying different signals across the electromagnetic spectrum (gamma-rays, X-rays, radio waves) produced at different scales of the Universe (galactic, extragalactic, cosmic web filaments). In Part I, we obtained the first-ever prediction of the cross-correlation signal between the extragalactic gamma-ray flux and the 21cm line emitted by hydrogen atoms in dark matter halos. We showed that the neutral hydrogen distribution is a highly competitive probe for dark matter searches, especially in view of the next-generation radio telescope Square Kilometre Array. In Part II, we obtained the limits on the annihilation cross-section of dark matter particles by comparing the X-ray flux measured by INTEGRAL with the theoretical signal expected in the case of particles with a mass between 1 MeV and 5 GeV. We derived the most stringent constraints in the literature on such particles with a mass between 150 MeV and 1.5 GeV. The originality of this work resides in including the contribution from the scattering between the low-energy photons in the Milky Way with the electrons and positrons, produced by dark matter particles. In Part III, we focused on an exotic radio signal, emerging from the GLEAM survey, which seems compatible with a filament of the cosmic web and provides direct evidence for one of the pillars of our understanding of structure formation in the Universe. This radio emission can be explained by dark matter candidates with a mass in the range of 5-10 GeV, decaying into pairs of electrons and positrons. This thesis contributes to a broad spectrum of research for particle dark matter on different levels, since we considered different types of signals, multiple targets and different mass scales.",
+  "arxiv_id": "2212.00125",
+  "doi": null,
+  "inspire_id": "2606568",
+  "authors_short": "Pinetti",
+  "bibkey": "Pinetti:2021jjs",
+  "bib_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
+  "fetched_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
+  "title_match": "ok",
+  "title_similarity": 1.0,
+  "source": "inspire_arxiv",
+  "fetched_at": "2026-05-18T19:52:11.039717Z"
+}

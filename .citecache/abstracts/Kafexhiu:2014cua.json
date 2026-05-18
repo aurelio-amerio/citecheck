@@ -1,0 +1,15 @@
+{
+  "title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
+  "abstract": "<p>Using publicly available Monte\u00a0Carlo codes as well as compilation of published data on <inline-formula><mml:math display=\"inline\"><mml:mi>p</mml:mi><mml:mi>p</mml:mi></mml:math></inline-formula> interactions for proton kinetic energy below 2\u00a0GeV, we parametrize the energy spectra and production rates of <inline-formula><mml:math display=\"inline\"><mml:mi>\u03b3</mml:mi></mml:math></inline-formula>-rays by simple but quite accurate (<inline-formula><mml:math display=\"inline\"><mml:mo>\u2264</mml:mo><mml:mn>20</mml:mn><mml:mo>%</mml:mo></mml:math></inline-formula>) analytical expressions in a broad range from the kinematic threshold to PeV energies.</p>",
+  "arxiv_id": "1406.7369",
+  "doi": "10.1103/PhysRevD.90.123014",
+  "inspire_id": "1303850",
+  "authors_short": "Kafexhiu et al.",
+  "bibkey": "Kafexhiu:2014cua",
+  "bib_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
+  "fetched_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
+  "title_match": "ok",
+  "title_similarity": 1.0,
+  "source": "inspire_arxiv",
+  "fetched_at": "2026-05-18T19:52:10.766804Z"
+}

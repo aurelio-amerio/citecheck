@@ -1,0 +1,15 @@
+{
+  "title": "Bremsstrahlung, synchrotron radiation, and compton scattering of high-energy electrons traversing dilute gases",
+  "abstract": "Expressions are derived for the total energy loss and photon-production spectrum by the processes of Compton scattering, bremsstrahlung, and synchrotron radiation from highly relativistic electrons. For Compton scattering, the general case, the Thomson limit, and the extreme Klein-Nishina limit are considered. Bremsstrahlung is treated for the cases where the electron is scattered by a pure Coulomb field and by an atom. For the latter case the effects of shielding are discussed extensively. The synchrotron spectrum is derived for an electron moving in a circular orbit perpendicular to the magnetic field and also for the general case where the electron's motion is helical. The total photon-production spectrum is derived for each process when there is a power-law distribution of electron energies. The problems of the effects of the three processes on the electron distribution itself are considered. It is shown that if the electron loses a small fraction of its energy in a single occurrence of a process, the electron distribution function satisfies a continuity equation which is a differential equation in energy space. For the more general case where the electron can lose energy in discrete amounts (as in bremsstrahlung and extreme Klein-Nishina Compton losses), the electron distribution function satisfies an integro-differential equation. Some approximate solutions to this equation are derived for certain special cases.",
+  "arxiv_id": null,
+  "doi": "10.1103/RevModPhys.42.237",
+  "inspire_id": "65624",
+  "authors_short": "Blumenthal et al.",
+  "bibkey": "Blumenthal:1970gc",
+  "bib_title": "Bremsstrahlung, synchrotron radiation, and compton scattering of high-energy electrons traversing dilute gases",
+  "fetched_title": "Bremsstrahlung, synchrotron radiation, and compton scattering of high-energy electrons traversing dilute gases",
+  "title_match": "ok",
+  "title_similarity": 1.0,
+  "source": "inspire_doi",
+  "fetched_at": "2026-05-18T19:52:11.036385Z"
+}

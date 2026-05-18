@@ -1,0 +1,15 @@
+{
+  "title": "The nature of the Diffuse Gamma-Ray Background",
+  "abstract": "We review the current understanding of the Diffuse Gamma-Ray Background (DGRB). The DGRB is what remains of the total measured gamma-ray emission after the subtraction of the resolved sources and of the diffuse Galactic foregrounds. It is interpreted as the cumulative emission of sources that are not bright enough to be detected individually. Yet, its exact composition remains unveiled. Well-established astrophysical source populations (e.g.\u00a0blazars, misaligned AGNs, star-forming galaxies and millisecond pulsars) all represent guaranteed contributors to the DGRB. More exotic scenarios, such as Dark Matter annihilation or decay, may contribute as well. In this review, we describe how these components have been modeled in the literature and how the DGRB can be used to provide valuable information on each of them. We summarize the observational information currently available on the DGRB, paying particular attention to the most recent measurement of its intensity energy spectrum by the Fermi \u00a0LAT Collaboration. We also discuss the novel analyses of the auto-correlation angular power spectrum of the DGRB and of its cross-correlation with tracers of the large-scale structure of the Universe. New data sets already (or soon) available are expected to provide further insight on the nature of this emission. By summarizing where we stand on the current knowledge of the DGRB, this review is intended both as a useful reference for those interested in the topic and as a means to trigger new ideas for further research.",
+  "arxiv_id": "1502.02866",
+  "doi": "10.1016/j.physrep.2015.09.002",
+  "inspire_id": "1343748",
+  "authors_short": "Fornasa et al.",
+  "bibkey": "DGRB-review",
+  "bib_title": "The nature of the Diffuse Gamma-Ray Background",
+  "fetched_title": "The nature of the Diffuse Gamma-Ray Background",
+  "title_match": "ok",
+  "title_similarity": 1.0,
+  "source": "inspire_arxiv",
+  "fetched_at": "2026-05-18T19:52:11.028997Z"
+}
