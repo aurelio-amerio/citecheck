@@ -1,0 +1,17 @@
+{
+  "hits": {
+    "hits": [
+      {
+        "id": "2729450",
+        "metadata": {
+          "titles": [{"title": "CosmiXs: cosmic messenger spectra for indirect dark matter searches"}],
+          "abstracts": [{"value": "We present an updated set of cosmic messenger spectra..."}],
+          "arxiv_eprints": [{"value": "2312.01153"}],
+          "dois": [{"value": "10.1088/1475-7516/2024/03/035"}],
+          "authors": [{"full_name": "Arina, Chiara"}, {"full_name": "Di Mauro, Mattia"}]
+        }
+      }
+    ],
+    "total": 1
+  }
+}

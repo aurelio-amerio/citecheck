@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2312.01153v1</id>
+    <title>CosmiXs: cosmic messenger spectra for indirect dark matter searches</title>
+    <summary>We present an updated set of cosmic messenger spectra produced from dark matter annihilation.</summary>
+    <author><name>Chiara Arina</name></author>
+    <author><name>Mattia Di Mauro</name></author>
+    <published>2023-12-02T00:00:00Z</published>
+  </entry>
+</feed>

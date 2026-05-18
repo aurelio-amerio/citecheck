@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "citecheck-marketplace",
+  "description": "Citation pertinence review plugin for LaTeX research documents.",
+  "owner": {
+    "name": "Aurelio Amerio"
+  },
+  "plugins": [
+    {
+      "name": "citecheck",
+      "description": "Pertinence review for \\cite references in LaTeX using parallel haiku scoring against InspireHEP and arXiv abstracts.",
+      "author": { "name": "Aurelio Amerio" },
+      "category": "research",
+      "source": {
+        "source": "local",
+        "path": "."
+      }
+    }
+  ]
+}
