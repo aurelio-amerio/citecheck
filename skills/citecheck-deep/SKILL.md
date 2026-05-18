@@ -83,8 +83,8 @@ SCRIPTS="${SCRIPTS:-.claude/skills/citecheck-deep/scripts}"
 6. **Fetch arXiv PDFs.** Read `arxiv_queue.json`. For each unique `arxiv_id`:
    - PDF target: `.citecache/pdfs/<arxiv_id>.pdf`
    - If `--refresh` not set and target exists, skip.
-   - Otherwise: call `mcp__arxiv__get_paper(arxiv_id)` to get the PDF URL,
-     then run:
+   - Otherwise: read `pdf_url` from `.citecache/abstracts/<bibkey>.json` for any entry with that `arxiv_id`.
+     If `pdf_url` is null or missing, fall back to `https://arxiv.org/pdf/<arxiv_id>`. Then run:
      ```bash
      mkdir -p .citecache/pdfs
      curl -L "<pdf_url>" -o ".citecache/pdfs/<arxiv_id>.pdf" --silent --fail

@@ -77,6 +77,7 @@ def _normalize_inspire_hit(hit: dict) -> dict | None:
         "doi": doi,
         "inspire_id": hit.get("id"),
         "authors_short": _authors_short(authors),
+        "pdf_url": None,  # resolved later via arXiv API if arxiv_id is present
     }
 
 
@@ -154,6 +155,11 @@ def _parse_arxiv_entry(xml_bytes: bytes) -> dict | None:
         m = re.search(r"abs/([^v\s]+)(?:v\d+)?", id_el.text)
         if m:
             arxiv_id = m.group(1)
+    pdf_url = None
+    for link in entry.findall("a:link", ARXIV_NS):
+        if link.get("title") == "pdf":
+            pdf_url = link.get("href")
+            break
     return {
         "title": (title_el.text or "").strip() if title_el is not None else "",
         "abstract": (summary_el.text or "").strip() if summary_el is not None else None,
@@ -161,6 +167,7 @@ def _parse_arxiv_entry(xml_bytes: bytes) -> dict | None:
         "doi": None,
         "inspire_id": None,
         "authors_short": _authors_short_plain([a.text for a in authors if a.text]),
+        "pdf_url": pdf_url,
     }
 
 
@@ -177,6 +184,15 @@ def query_arxiv_id(arxiv_id: str) -> dict | None:
     url = f"{ARXIV_BASE}?id_list={quote_plus(arxiv_id)}"
     data = _http_get_bytes(url)
     return _parse_arxiv_entry(data)
+
+
+def fetch_arxiv_pdf_url(arxiv_id: str) -> str | None:
+    """Return the canonical PDF URL from the arXiv API, or None on failure."""
+    try:
+        result = query_arxiv_id(arxiv_id)
+        return result.get("pdf_url") if result else None
+    except FetchError:
+        return None
 
 
 def query_arxiv_title(query_title: str, bib_title: str) -> dict | None:
@@ -245,6 +261,7 @@ def _empty_record(
         "doi": doi,
         "inspire_id": None,
         "authors_short": None,
+        "pdf_url": f"https://arxiv.org/pdf/{arxiv_id}" if arxiv_id else None,
         "bib_title": bib_title,
         "fetched_title": None,
         "title_match": source,  # "not_found" or "fetch_error"
@@ -254,6 +271,13 @@ def _empty_record(
     }
     if errors:
         rec["fetch_errors"] = errors
+    return rec
+
+
+def _fill_pdf_url(rec: dict) -> dict:
+    """Populate pdf_url from the arXiv API when it's missing but arxiv_id is known."""
+    if rec.get("pdf_url") is None and rec.get("arxiv_id"):
+        rec["pdf_url"] = fetch_arxiv_pdf_url(rec["arxiv_id"])
     return rec
 
 
@@ -286,17 +310,17 @@ def resolve(
                         f"Inspire arxiv:{arxiv_id} returned mismatched title; "
                         f"arXiv API title matched bib title at sim={promoted['title_similarity']}."
                     )
-                    return promoted
+                    return _fill_pdf_url(promoted)
                 rec["cross_check_note"] = "Inspire mismatch confirmed; arXiv did not produce a better match."
-            return rec
+            return _fill_pdf_url(rec)
     if doi:
         hit = _try(query_inspire_doi, doi, errors=errors)
         if hit:
-            return _augment(hit, bibkey=bibkey, bib_title=bib_title, source="inspire_doi")
+            return _fill_pdf_url(_augment(hit, bibkey=bibkey, bib_title=bib_title, source="inspire_doi"))
     if bib_title:
         hit = _try(query_inspire_title, bib_title, bib_title, errors=errors)
         if hit:
-            return _augment(hit, bibkey=bibkey, bib_title=bib_title, source="inspire_title")
+            return _fill_pdf_url(_augment(hit, bibkey=bibkey, bib_title=bib_title, source="inspire_title"))
 
     if use_arxiv_fallback:
         if arxiv_id:

@@ -176,7 +176,8 @@ def test_cross_check_promotes_arxiv_on_mismatch():
     from fetch_abstracts import resolve
     inspire_payload = (FIXT / "inspire_arxiv.json").read_bytes()
     arxiv_payload = (FIXT / "arxiv_response.xml").read_bytes()
-    seq = [_mock_urlopen(inspire_payload), _mock_urlopen(arxiv_payload)]
+    # 1: inspire lookup, 2: cross-check arXiv query, 3: fetch_arxiv_pdf_url for inspire hit
+    seq = [_mock_urlopen(inspire_payload), _mock_urlopen(arxiv_payload), _mock_urlopen(arxiv_payload)]
 
     with patch("fetch_abstracts.urlopen", side_effect=lambda *a, **k: seq.pop(0)):
         rec = resolve(
