@@ -17,7 +17,16 @@ title-mismatched citations for manual review.
   `--no-arxiv-fallback`, `--cross-check`,
   `--batch-size <n>` (default 15), `--parallel <n>` (default 8).
 
-All scripts live in `${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/`.
+All scripts live under the plugin's `skills/citecheck/scripts/` directory.
+At the start of every bash block, set the `SCRIPTS` variable so the commands
+work whether the skill was loaded from a plugin or from the local
+`.claude/skills/citecheck/` checkout:
+
+```bash
+SCRIPTS="${CLAUDE_PLUGIN_ROOT:+$CLAUDE_PLUGIN_ROOT/skills/citecheck/scripts}"
+SCRIPTS="${SCRIPTS:-.claude/skills/citecheck/scripts}"
+```
+
 All outputs are written under `.citecheck/` and `.citecache/` rooted at the
 current working directory.
 
@@ -33,38 +42,44 @@ current working directory.
    ```bash
    rm -rf .citecheck/.tmp
    mkdir -p .citecheck/.tmp
-   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/parse_bib.py \
+   python3 ${SCRIPTS}/parse_bib.py \
        <bib_path> .citecheck/.tmp/bib_index.json
    ```
 
 3. **Extract citations.**
 
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/extract_citations.py \
+   python3 ${SCRIPTS}/extract_citations.py \
        <tex_file> .citecheck/.tmp/citations.json
    ```
 
    If the citations file is empty, print
    `No \cite references found in <tex_file>.` and stop.
 
-4. **Compute missing keys.** Read `bib_index.json` and `citations.json`.
-   For each unique bibkey:
-   - If the bibkey is not in `bib_index.json`, skip fetch (the citation will
-     be marked `abstract_status: "missing_bib_entry"` in step 6).
-   - Else if the bib entry has no `title` AND no `arxiv_id` AND no `doi`, skip
-     fetch (the citation will be marked `abstract_status: "no_bib_metadata"`).
-   - Else compute the cache filename as `bibkey.replace("/", "_") + ".json"`.
-     If `.citecache/abstracts/<safe>.json` exists and (unless `--refresh`) has
-     a `source` other than `fetch_error` (and `not_found` only re-fetched when
-     `--refresh-missing`), reuse it.
-   - Else add `{bibkey, title, arxiv_id, doi}` to `missing_keys.json`.
+4. **Compute missing keys.** Decides which bibkeys need a fresh fetch given
+   the bib index, citations, and current cache. Skip rules:
+   - bibkey not in `bib_index.json` → skip (will be marked
+     `abstract_status: "missing_bib_entry"` in step 6).
+   - bib entry has no `title` AND no `arxiv_id` AND no `doi` → skip
+     (will be marked `abstract_status: "no_bib_metadata"`).
+   - cache hit with `source == "fetch_error"` → always re-fetch.
+   - cache hit with `source == "not_found"` → re-fetch only when
+     `--refresh-missing` is passed.
+   - cache hit with any other source → re-fetch only when `--refresh` is passed.
 
-   Write `missing_keys.json` to `.citecheck/.tmp/missing_keys.json`.
+   ```bash
+   python3 ${SCRIPTS}/compute_missing.py \
+       --citations .citecheck/.tmp/citations.json \
+       --bib-index .citecheck/.tmp/bib_index.json \
+       --cache-dir .citecache/abstracts \
+       --out .citecheck/.tmp/missing_keys.json \
+       [--refresh] [--refresh-missing]
+   ```
 
 5. **Fetch missing abstracts.**
 
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/fetch_abstracts.py \
+   python3 ${SCRIPTS}/fetch_abstracts.py \
        --missing .citecheck/.tmp/missing_keys.json \
        --cache-dir .citecache/abstracts \
        --parallel <parallel> \
@@ -74,7 +89,7 @@ current working directory.
 6. **Build batches.**
 
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/build_batches.py \
+   python3 ${SCRIPTS}/build_batches.py \
        --citations .citecheck/.tmp/citations.json \
        --bib-index .citecheck/.tmp/bib_index.json \
        --abstracts-dir .citecache/abstracts \
@@ -108,7 +123,7 @@ current working directory.
 9. **Collate report.**
 
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/collate_report.py \
+   python3 ${SCRIPTS}/collate_report.py \
        --citations .citecheck/.tmp/citations.json \
        --scores-dir .citecheck/.tmp/ \
        --abstracts-dir .citecache/abstracts \
