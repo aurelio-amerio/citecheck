@@ -5,13 +5,14 @@ import argparse
 import json
 from pathlib import Path
 
-_DEEP_FIELDS = ("deep_score", "deep_verdict", "deep_reason", "deep_source", "deep_nlm_evidence")
+_DEEP_FIELDS = ("deep_score", "deep_verdict", "deep_reason", "deep_source", "deep_nlm_evidence", "deep_improvement_comment")
 _SKIPPED_DEFAULTS = {
     "deep_score": None,
     "deep_verdict": "skipped",
     "deep_reason": None,
     "deep_source": "skipped",
     "deep_nlm_evidence": None,
+    "deep_improvement_comment": None,
 }
 
 
@@ -65,6 +66,9 @@ def render_deep_section(report: dict) -> str:
         evidence = row.get("deep_nlm_evidence")
         if evidence:
             block += ["", f"> {evidence}"]
+        comment = row.get("deep_improvement_comment")
+        if comment:
+            block += ["", f"**Suggested fix:** {comment}"]
         block.append("")
         return block
 

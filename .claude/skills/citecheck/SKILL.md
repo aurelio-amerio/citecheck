@@ -5,13 +5,13 @@ description: Score \cite pertinence in a LaTeX file. Use when the user runs /cit
 
 # citecheck
 
-Score every `\cite{...}` in a single LaTeX file against the cited paper's
+Score every `\cite{...}` in one or more LaTeX files against the cited paper's
 abstract (InspireHEP preferred, arXiv as fallback), surface low-scoring or
 title-mismatched citations for manual review.
 
 ## Inputs
 
-- `tex_file` — absolute path to the `.tex` file passed by the user.
+- `tex_files` — one or more absolute paths to `.tex` files passed by the user.
 - Optional flags (parsed from the user message):
   `--bib <path>`, `--refresh`, `--refresh-missing`,
   `--no-arxiv-fallback`, `--cross-check`,
@@ -31,6 +31,10 @@ All outputs are written under `.citecheck/` and `.citecache/` rooted at the
 current working directory.
 
 ## Steps
+
+**Repeat steps 1–11 for each `tex_file` in order, one at a time.** Do not
+start the next file until the current one completes. Print
+`[1/N] Processing <tex_file> …` before each file's step 1.
 
 1. **Resolve bib.** If `--bib` was given, use it. Otherwise walk up from
    `tex_file` until a `bibliography.bib` is found. Fail fast with a clear
@@ -54,7 +58,7 @@ current working directory.
    ```
 
    If the citations file is empty, print
-   `No \cite references found in <tex_file>.` and stop.
+   `No \cite references found in <tex_file>.` and skip to the next file.
 
 4. **Compute missing keys.** Decides which bibkeys need a fresh fetch given
    the bib index, citations, and current cache. Skip rules:
@@ -134,22 +138,28 @@ current working directory.
 
 10. **Clean tmp.** Remove `.citecheck/.tmp/`.
 
-11. **Print summary.** Read the report JSON (a dict, not a list) and print one line:
+11. **Print per-file summary.** Read the report JSON (a dict, not a list) and print one line:
 
-   ```bash
-   python3 -c "
-   import json, sys
-   d = json.load(open('.citecheck/<basename>.json'))
-   needing = d['scored_low'] + d['scored_borderline']
-   title_issues = len(d['title_match_issues'])
-   print(f\"{d['total_citations']} citations · {needing} needing review · {title_issues} title-match issues · report at .citecheck/<basename>.md\")
-   "
-   ```
+    ```bash
+    python3 -c "
+    import json, sys
+    d = json.load(open('.citecheck/<basename>.json'))
+    needing = d['scored_low'] + d['scored_borderline']
+    title_issues = len(d['title_match_issues'])
+    print(f\"{d['total_citations']} citations · {needing} needing review · {title_issues} title-match issues · report at .citecheck/<basename>.md\")
+    "
+    ```
+
+12. **Combined summary (multi-file only).** After all files are processed,
+    if more than one file was given, print a single totals line:
+
+    ```
+    Done. <total_citations> citations across <N> files · <total_needing> needing review · <total_title_issues> title-match issues
+    ```
 
 ## Invariants
 
 - Never modify the `.tex` file or `bibliography.bib`.
 - Subagents must only call `Read` and `Write`. Reject any other tool surface.
 - Abstract cache persists across runs; scoring is always recomputed.
-- If a step fails, stop and report the failing step rather than continuing
-  with partial state.
+- If a step fails for one file, report the error and continue with the next file rather than aborting the whole run.
