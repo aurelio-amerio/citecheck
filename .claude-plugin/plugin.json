@@ -8,7 +8,4 @@
   },
   "repository": "https://github.com/aurelio-amerio/citecheck",
   "keywords": ["latex", "citations", "research", "physics", "inspirehep", "arxiv"],
-  "skills": "./skills/",
-  "commands": "./commands/",
-  "agents": "./agents/"
 }
