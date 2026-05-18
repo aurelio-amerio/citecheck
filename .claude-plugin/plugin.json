@@ -1,8 +1,14 @@
 {
   "name": "citecheck",
-  "version": "0.1.0",
+  "displayName": "citecheck",
   "description": "Pertinence review for \\cite references in LaTeX research documents: parallel haiku scoring against InspireHEP and arXiv abstracts to flag mistakenly inserted or hallucinated citations.",
+  "version": "0.1.0",
   "author": {
-    "name": "Aurelio Amerio"
-  }
+    "name": "aurelio-amerio"
+  },
+  "repository": "https://github.com/aurelio-amerio/citecheck",
+  "keywords": ["latex", "citations", "research", "physics", "inspirehep", "arxiv"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": "./agents/"
 }
