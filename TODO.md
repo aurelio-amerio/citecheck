@@ -1,0 +1,2 @@
+  [ ] add a new skill that verify the sources which were flagged as poor match
+  [ ] it should query those sources through notebooklm (using the paper title + arxiv number + line content) to verify if they really are a poor match 
