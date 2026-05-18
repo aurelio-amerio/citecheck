@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
 
-SCRIPTS = Path(__file__).parent.parent / "skills" / "citecheck" / "scripts"
-sys.path.insert(0, str(SCRIPTS))
+_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(_ROOT / ".claude" / "skills" / "citecheck" / "scripts"))
+sys.path.insert(0, str(_ROOT / ".claude" / "skills" / "citecheck-deep" / "scripts"))
