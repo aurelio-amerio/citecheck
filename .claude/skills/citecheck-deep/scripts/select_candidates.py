@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 _SKIP_REASONS = {"missing_bib_entry", "no_bib_metadata", "fetch_error"}

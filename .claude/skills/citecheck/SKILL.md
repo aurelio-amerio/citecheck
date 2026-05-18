@@ -134,8 +134,17 @@ current working directory.
 
 10. **Clean tmp.** Remove `.citecheck/.tmp/`.
 
-11. **Print summary.** One line:
-    `<N> citations · <M> needing review · <K> title-match issues · report at .citecheck/<basename>.md`
+11. **Print summary.** Read the report JSON (a dict, not a list) and print one line:
+
+   ```bash
+   python3 -c "
+   import json, sys
+   d = json.load(open('.citecheck/<basename>.json'))
+   needing = d['scored_low'] + d['scored_borderline']
+   title_issues = len(d['title_match_issues'])
+   print(f\"{d['total_citations']} citations · {needing} needing review · {title_issues} title-match issues · report at .citecheck/<basename>.md\")
+   "
+   ```
 
 ## Invariants
 

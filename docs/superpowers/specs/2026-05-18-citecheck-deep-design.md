@@ -90,8 +90,8 @@ for each entry in NLM queue (no_abstract entries first, then escalations):
   if cache hit and not --refresh: use cached verdict
   else:
     notebook_query(notebooklm_library_id,
-      "In the context of [paragraph], does '[bib_title]' support this claim?
-       Cite the relevant passage if so.")
+      "In the context of [paragraph], does '[bib_title]' by [first_author] et al. ([year])
+       support this claim? Cite the relevant passage if so.")
     await response
     parse → {final_score, final_verdict, nlm_evidence}
     write to .citecache/deep_verdicts/<hash>.json
@@ -122,6 +122,8 @@ You are verifying whether a cited paper supports a specific claim.
 
 bibkey: <bibkey>
 bib_title: <bib_title>
+first_author: <first_author>
+year: <year>
 section: <section_heading>
 paragraph: <paragraph text>
 

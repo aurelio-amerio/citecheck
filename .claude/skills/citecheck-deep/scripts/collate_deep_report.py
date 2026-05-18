@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 _DEEP_FIELDS = ("deep_score", "deep_verdict", "deep_reason", "deep_source", "deep_nlm_evidence")
