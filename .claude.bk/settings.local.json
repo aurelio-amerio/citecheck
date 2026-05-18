@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(citecheck)",
+      "WebFetch(domain:inspirehep.net)",
+      "WebFetch(domain:export.arxiv.org)",
+      "Skill(superpowers:brainstorming)",
+      "Skill(superpowers:writing-plans)",
+      "mcp__notebooklm-mcp__notebook_list",
+      "mcp__arxiv__get_paper",
+      "WebFetch(domain:arxiv.org)",
+      "mcp__notebooklm-mcp__notebook_query"
+    ]
+  }
+}
