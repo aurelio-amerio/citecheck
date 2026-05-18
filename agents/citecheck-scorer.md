@@ -25,20 +25,29 @@ Rubric:
 - 3-4:  Adjacent field; tenuous connection to the paragraph.
 - 1-2:  Off-topic; likely a wrong key, swapped citation, or hallucination.
 
-Special cases:
-- `abstract_status == "not_found"`        → score: null, reason: "no_abstract".
-- `abstract_status == "mismatch"`         → score: null, reason: "title_mismatch".
+Special cases — emit the `reason` value EXACTLY as the literal short code
+below (no English sentence, no period, no extra words). These short codes
+are part of the contract with the collator; free-form text breaks the
+unscored-row tally.
+
+- `abstract_status == "not_found"`         → score: null, reason: "no_abstract".
+- `abstract_status == "mismatch"`          → score: null, reason: "title_mismatch".
 - `abstract_status == "missing_bib_entry"` → score: null, reason: "missing_bib_entry".
-- `abstract_status == "no_bib_metadata"`  → score: null, reason: "no_bib_metadata".
-- `abstract_status == "fetch_error"`      → score: null, reason: "fetch_error".
-- `abstract_status == "fuzzy"`            → score normally + flag: "fuzzy_title".
+- `abstract_status == "no_bib_metadata"`   → score: null, reason: "no_bib_metadata".
+- `abstract_status == "fetch_error"`       → score: null, reason: "fetch_error".
+- `abstract_status == "fuzzy"`             → score normally + flag: "fuzzy_title".
 
 Output JSON schema (top-level is an array):
 [
-  {"id": "...", "bibkey": "...", "score": <int|null>, "reason": "...", "flag": "..."?}
+  {"id": "c0", "bibkey": "...", "score": <int|null>, "reason": "...", "flag": "..."?}
 ]
 
-`reason` is one sentence, ≤ 140 characters, explaining the score.
+The `id` field MUST be passed through unchanged from the input entry (it is
+already a string of the form `c<i>`). Do not renumber or coerce to int.
+
+For scored rows (score is an integer), `reason` is one sentence,
+≤ 140 characters, explaining the score. For the special cases above,
+`reason` is the literal short code only.
 
 Do not call any tool other than Read and Write.
 Do not edit any file other than the output path you were given.

@@ -52,3 +52,39 @@ def test_render_markdown_has_three_sections():
     assert "Citations needing review" in md
     assert "Citations OK" in md
     assert "score 2" in md
+
+
+def test_collate_accepts_integer_ids():
+    """Scorer agents sometimes echo integer ids; collate should still match them."""
+    citations = [
+        {"bibkey": "OK", "line": 1, "tex_file": "x.tex",
+         "paragraph": "p", "section_heading": "S"},
+        {"bibkey": "BAD", "line": 2, "tex_file": "x.tex",
+         "paragraph": "p", "section_heading": "S"},
+    ]
+    abstracts = {"OK": {"title_match": "ok"}, "BAD": {"title_match": "ok"}}
+    scores = [
+        {"id": 0, "bibkey": "OK", "score": 9, "reason": "matches"},
+        {"id": "1", "bibkey": "BAD", "score": 3, "reason": "off-topic"},
+    ]
+    report = collate(citations, scores, abstracts, tex_path="x.tex")
+    assert report["scored_ok"] == 1
+    assert report["scored_low"] == 1
+    assert sum(report["unscored"].values()) == 0
+
+
+def test_collate_falls_back_to_pipeline_status_for_unscored():
+    """When the scorer wrote a free-text reason for a not_found row,
+    the unscored tally should still classify it as no_abstract."""
+    citations = [
+        {"bibkey": "NF", "line": 1, "tex_file": "x.tex",
+         "paragraph": "p", "section_heading": "S"},
+    ]
+    abstracts = {"NF": {"source": "not_found", "title_match": "not_found"}}
+    scores = [
+        {"id": "c0", "bibkey": "NF", "score": None,
+         "reason": "Abstract not found for this reference."},
+    ]
+    report = collate(citations, scores, abstracts, tex_path="x.tex")
+    assert report["unscored"]["no_abstract"] == 1
+    assert report["unscored"]["scoring_failed"] == 0

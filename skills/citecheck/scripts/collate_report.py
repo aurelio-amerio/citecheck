@@ -7,6 +7,46 @@ import sys
 from pathlib import Path
 
 
+_UNSCORED_REASONS = {
+    "no_abstract", "title_mismatch", "missing_bib_entry",
+    "no_bib_metadata", "fetch_error", "scoring_failed",
+}
+
+_STATUS_TO_REASON = {
+    "not_found": "no_abstract",
+    "mismatch": "title_mismatch",
+    "missing_bib_entry": "missing_bib_entry",
+    "no_bib_metadata": "no_bib_metadata",
+    "fetch_error": "fetch_error",
+}
+
+
+def _normalize_score_id(raw) -> str | None:
+    """Accept either ``"c<i>"`` or a bare integer/int-string and return ``"c<i>"``."""
+    if raw is None:
+        return None
+    if isinstance(raw, int):
+        return f"c{raw}"
+    s = str(raw)
+    if s.startswith("c") and s[1:].isdigit():
+        return s
+    if s.isdigit():
+        return f"c{s}"
+    return s  # leave unrecognized IDs alone
+
+
+def _row_status(abstract: dict) -> str | None:
+    """Derive the abstract pipeline's status code for unscored-row classification."""
+    if not abstract:
+        return None
+    src = abstract.get("source")
+    if src == "not_found":
+        return "not_found"
+    if src == "fetch_error":
+        return "fetch_error"
+    return abstract.get("title_match")
+
+
 def collate(
     citations: list[dict],
     scores: list[dict],
@@ -14,7 +54,11 @@ def collate(
     *,
     tex_path: str,
 ) -> dict:
-    score_by_id = {s["id"]: s for s in scores}
+    score_by_id: dict[str, dict] = {}
+    for s in scores:
+        nid = _normalize_score_id(s.get("id"))
+        if nid is not None:
+            score_by_id[nid] = s
     rows = []
     for i, cit in enumerate(citations):
         cid = f"c{i}"
@@ -47,9 +91,17 @@ def collate(
 
     unscored_counts = {"no_abstract": 0, "title_mismatch": 0, "missing_bib_entry": 0,
                        "no_bib_metadata": 0, "fetch_error": 0, "scoring_failed": 0}
-    for r in rows:
-        if r["score"] is None and r["reason"] in unscored_counts:
-            unscored_counts[r["reason"]] += 1
+    for i, r in enumerate(rows):
+        if r["score"] is not None:
+            continue
+        # Prefer the literal short code if the scorer used one; otherwise infer
+        # the bucket from the underlying abstract-pipeline status so free-text
+        # reasons don't drop unscored rows on the floor.
+        bucket = r["reason"] if r["reason"] in _UNSCORED_REASONS else None
+        if bucket is None:
+            status = _row_status(abstracts.get(citations[i]["bibkey"], {}))
+            bucket = _STATUS_TO_REASON.get(status, "scoring_failed")
+        unscored_counts[bucket] += 1
 
     avg = (sum(r["score"] for r in scored) / len(scored)) if scored else None
 

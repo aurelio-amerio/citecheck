@@ -27,9 +27,11 @@ current working directory.
    `tex_file` until a `bibliography.bib` is found. Fail fast with a clear
    message if none.
 
-2. **Build bib index.**
+2. **Build bib index.** Clear any intermediates from a prior aborted run
+   first — `.citecache/` (the abstract cache) is intentionally preserved.
 
    ```bash
+   rm -rf .citecheck/.tmp
    mkdir -p .citecheck/.tmp
    python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/parse_bib.py \
        <bib_path> .citecheck/.tmp/bib_index.json
@@ -47,13 +49,14 @@ current working directory.
 
 4. **Compute missing keys.** Read `bib_index.json` and `citations.json`.
    For each unique bibkey:
-   - If the bibkey is not in `bib_index.json`, mark
-     `abstract_status: "missing_bib_entry"` for later batching and skip fetch.
-   - Else if the bib entry has no `title` AND no `arxiv_id` AND no `doi`, mark
-     `abstract_status: "no_bib_metadata"` and skip fetch.
-   - Else if `.citecache/abstracts/<safe>.json` exists and (unless `--refresh`)
-     has a `source` other than `fetch_error` (and `not_found` only re-fetched
-     when `--refresh-missing`), reuse it.
+   - If the bibkey is not in `bib_index.json`, skip fetch (the citation will
+     be marked `abstract_status: "missing_bib_entry"` in step 6).
+   - Else if the bib entry has no `title` AND no `arxiv_id` AND no `doi`, skip
+     fetch (the citation will be marked `abstract_status: "no_bib_metadata"`).
+   - Else compute the cache filename as `bibkey.replace("/", "_") + ".json"`.
+     If `.citecache/abstracts/<safe>.json` exists and (unless `--refresh`) has
+     a `source` other than `fetch_error` (and `not_found` only re-fetched when
+     `--refresh-missing`), reuse it.
    - Else add `{bibkey, title, arxiv_id, doi}` to `missing_keys.json`.
 
    Write `missing_keys.json` to `.citecheck/.tmp/missing_keys.json`.
@@ -68,12 +71,23 @@ current working directory.
        [--cross-check] [--no-arxiv-fallback]
    ```
 
-6. **Build batches.** Partition the citation list into batches of
-   `--batch-size` items. For each citation, set `abstract_status` per Step 4
-   (using the now-populated cache: `ok` / `fuzzy` / `mismatch` / `not_found` /
-   `fetch_error` from the cache file, or the `missing_bib_entry` /
-   `no_bib_metadata` flags from Step 4). Inline `abstract` text when present.
-   Write `.citecheck/.tmp/batch_<n>_input.json` files.
+6. **Build batches.**
+
+   ```bash
+   python3 ${CLAUDE_PLUGIN_ROOT}/skills/citecheck/scripts/build_batches.py \
+       --citations .citecheck/.tmp/citations.json \
+       --bib-index .citecheck/.tmp/bib_index.json \
+       --abstracts-dir .citecache/abstracts \
+       --out-dir .citecheck/.tmp/ \
+       --batch-size <batch_size>
+   ```
+
+   Writes `.citecheck/.tmp/batch_<n>_input.json` (1-indexed). Each entry has
+   `{id: "c<i>", bibkey, bib_title, fetched_title, abstract, abstract_status,
+   paragraph, section_heading, line}`. `abstract_status` is one of
+   `ok`, `fuzzy`, `mismatch`, `not_found`, `fetch_error`,
+   `missing_bib_entry`, `no_bib_metadata`. The script prints the batch count
+   on stdout.
 
 7. **Dispatch scorers.** In a single message, issue one `Agent` call per
    batch with:
