@@ -29,7 +29,12 @@
       "bib_title": "Dark Matter",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Content directly supports the claim; minor figure numbering discrepancy (Figure 6.7 vs claimed 7.1) does not diminish the accuracy of the scientific reference.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c6",
@@ -45,7 +50,12 @@
       "bib_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper directly provides the \u03c0\u2070 production cross-section parametrization across the proton energy range cited in the paragraph.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c19",
@@ -61,7 +71,12 @@
       "bib_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Thesis explicitly states that outside the Galactic Plane ICS is the dominant loss mechanism above ~40 MeV, directly supporting the claim about ICS overtaking bremsstrahlung at high latitudes.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"For e\u00b1 energies above approximately 40 MeV, the ICS emission is the dominant loss mechanism. Therefore, lines of sight that avoid the Galactic Plane, at high latitudes, are preferred...\""
     },
     {
       "id": "c12",
@@ -77,7 +92,12 @@
       "bib_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 7,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Thesis explicitly shows b_brem has linear behaviour in E and gives Z\u00b2-dependent bremsstrahlung power formula; the energy-loss timescale independence is implicit but not stated \u2014 Hooper:2024 is the stronger citation for that specific claim.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the bremsstrahlung component (brown) has a linear behaviour in E\" (Fig 6.8); Z\u00b2 scaling confirmed via P = (2/3) Z\u00b2e\u2076/((4\u03c0\u03b5\u2080c)\u00b3m_e\u00b2r\u2074) in Appendix A."
     },
     {
       "id": "c23",
@@ -93,7 +113,12 @@
       "bib_title": "The nature of the Diffuse Gamma-Ray Background",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper directly states that GDE modeling uncertainty ranges 15-30% and is largest systematic error in gamma-ray astrophysics.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c5",
@@ -109,7 +134,12 @@
       "bib_title": "Detection of the Characteristic Pion-Decay Signature in Supernova Remnants",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper provides the definitive observational detection of the pion-decay signature and pion bump in SNRs as claimed.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c17",
@@ -125,7 +155,12 @@
       "bib_title": "The nature of the Diffuse Gamma-Ray Background",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Abstract directly supports both the 80% photon fraction claim and cosmic ray interaction mechanism with concrete data.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     }
   ],
   "ok": [
@@ -143,7 +178,12 @@
       "bib_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c7",
@@ -159,7 +199,12 @@
       "bib_title": "Bremsstrahlung, synchrotron radiation, and compton scattering of high-energy electrons traversing dilute gases",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_doi"
+      "source": "inspire_doi",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c18",
@@ -175,7 +220,12 @@
       "bib_title": "Cosmic-ray propagation and interactions in the Galaxy",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c16",
@@ -191,7 +241,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c21",
@@ -207,7 +262,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c22",
@@ -223,7 +283,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     }
   ],
   "all_rows": [
@@ -241,7 +306,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook directly provides the kinematic threshold formula and the inelastic cross-section values (30\u201340 mb / 100 mb) with exact numerical agreement.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "Hooper writes the threshold as E_p > m_p + 2m_\u03c0 + m_\u03c0\u00b2/2m_p \u2248 1.2 GeV and \u03c3_inel^pp \u2248 (3\u20134)\u00d710\u207b\u00b2\u2076 cm\u00b2 at E_p \u2272 10 GeV rising to \u224810\u207b\u00b2\u2075 cm\u00b2 near 1 EeV, matching the paragraph exactly."
     },
     {
       "id": "c1",
@@ -257,7 +327,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook directly provides the kinematic threshold formula and the inelastic cross-section values (30\u201340 mb / 100 mb) with exact numerical agreement.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "Hooper writes the threshold as E_p > m_p + 2m_\u03c0 + m_\u03c0\u00b2/2m_p \u2248 1.2 GeV and \u03c3_inel^pp \u2248 (3\u20134)\u00d710\u207b\u00b2\u2076 cm\u00b2 at E_p \u2272 10 GeV rising to \u224810\u207b\u00b2\u2075 cm\u00b2 near 1 EeV, matching the paragraph exactly."
     },
     {
       "id": "c2",
@@ -273,7 +348,12 @@
       "bib_title": "High Energy Radiation from Black Holes: Gamma Rays, Cosmic Rays, and Neutrinos",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly states K_pp ~ 0.5 and that only a few collisions extract most of the cosmic ray's kinetic energy, matching the claim verbatim.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"The inelasticity K_pp giving the fraction of energy lost in an inelastic p+p\u2192\u03c0 producing collision is ~0.5, so only a few collisions are required to extract most of the cosmic ray proton's original kinetic energy.\""
     },
     {
       "id": "c3",
@@ -289,7 +369,12 @@
       "bib_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c4",
@@ -305,7 +390,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook directly provides the kinematic bounds formula, rest-frame energy E_\u03b3=m_\u03c0/2, and the pion-bump peak; minor note: Hooper states peak appears in dN/dE units, while the paragraph says E\u00b2dN/dE.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"In the lab frame, such decays generate a spectrum of gamma rays that is flat between (E_\u03c0\u2212\u221a(E_\u03c0\u00b2\u2212m_\u03c0\u00b2))/2 and (E_\u03c0+\u221a(E_\u03c0\u00b2\u2212m_\u03c0\u00b2))/2... any spectrum of neutral pions will produce a gamma-ray spectrum (presented in dN_\u03b3/dE_\u03b3 units) that peaks at m_\u03c0/2.\""
     },
     {
       "id": "c5",
@@ -321,7 +411,12 @@
       "bib_title": "Detection of the Characteristic Pion-Decay Signature in Supernova Remnants",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper provides the definitive observational detection of the pion-decay signature and pion bump in SNRs as claimed.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c6",
@@ -337,7 +432,12 @@
       "bib_title": "Parametrization of gamma-ray production cross-sections for pp interactions in a broad proton energy range from the kinematic threshold to PeV energies",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper directly provides the \u03c0\u2070 production cross-section parametrization across the proton energy range cited in the paragraph.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c7",
@@ -353,7 +453,12 @@
       "bib_title": "Bremsstrahlung, synchrotron radiation, and compton scattering of high-energy electrons traversing dilute gases",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_doi"
+      "source": "inspire_doi",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c8",
@@ -369,7 +474,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook directly confirms the Thomson-regime ICS energy loss rate, the E_\u03b3^max formula, and the -(\u03b1+1)/2 spectral index; minor notation difference: Hooper writes v_e\u00b2 instead of c (equivalent for ultra-relativistic electrons).",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "Hooper gives dE_e/dt = -(4/3)\u03c3_t \u03c1_rad v_e\u00b2 \u03b3_e\u00b2 and shows power-law electrons with index \u03b1 produce ICS photons with index -(\u03b1+1)/2."
     },
     {
       "id": "c9",
@@ -385,7 +495,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook directly confirms the Thomson-regime ICS energy loss rate, the E_\u03b3^max formula, and the -(\u03b1+1)/2 spectral index; minor notation difference: Hooper writes v_e\u00b2 instead of c (equivalent for ultra-relativistic electrons).",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "Hooper gives dE_e/dt = -(4/3)\u03c3_t \u03c1_rad v_e\u00b2 \u03b3_e\u00b2 and shows power-law electrons with index \u03b1 produce ICS photons with index -(\u03b1+1)/2."
     },
     {
       "id": "c10",
@@ -401,7 +516,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly gives the ~m_e\u2074/(E_e\u00b2T\u00b2) KN suppression factor and states the KN spectrum peaks sharply just below E_e, matching both claims exactly.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the energy loss rate is suppressed by an additional factor of ~45m_e\u2074/64\u03c0\u00b2T\u00b2E_e\u00b2 relative to that in the Thomson regime\" and \"in the Klein-Nishina regime, the spectrum of inverse Compton emission peaks strongly at energies only slightly below E_e\"."
     },
     {
       "id": "c11",
@@ -417,7 +537,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly names starlight, IR, and CMB as ICS targets and states KN suppression shifts the dominant target to lower-frequency photons (CMB) at higher electron energies.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"For more energetic electrons, Klein-Nishina suppression lessens the impact of this higher frequency radiation, causing lower energy target photons to play a more important role.\""
     },
     {
       "id": "c12",
@@ -433,7 +558,12 @@
       "bib_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 7,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Thesis explicitly shows b_brem has linear behaviour in E and gives Z\u00b2-dependent bremsstrahlung power formula; the energy-loss timescale independence is implicit but not stated \u2014 Hooper:2024 is the stronger citation for that specific claim.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the bremsstrahlung component (brown) has a linear behaviour in E\" (Fig 6.8); Z\u00b2 scaling confirmed via P = (2/3) Z\u00b2e\u2076/((4\u03c0\u03b5\u2080c)\u00b3m_e\u00b2r\u2074) in Appendix A."
     },
     {
       "id": "c13",
@@ -449,7 +579,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly confirms b_brem \u221d E_e, energy-loss timescale independent of E_e, photon spectrum mirrors electron spectrum, and MeV\u2013GeV dominance; Z\u00b2 scaling not in Hooper text but supported by other sources.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the timescale for bremsstrahlung energy losses is independent of the electron's energy. The spectrum of the photons produced through this mechanism exhibits a shape that approximately mirrors that of the electrons themselves. This process often provides the dominant cooling mechanism for cosmic-ray electrons in the ~MeV-GeV energy range.\""
     },
     {
       "id": "c14",
@@ -465,7 +600,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly confirms b_syn \u221d B\u00b2E_e\u00b2, the \u03c1_mag/\u03c1_rad ratio determining which mechanism dominates, and KN suppression causing synchrotron to dominate at the highest electron energies.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the energy-loss rates from synchrotron and inverse Compton scattering each scale as dE_e/dt \u221d E_e\u00b2, leading to a ratio (dE_e/dt)_syn/(dE_e/dt)_ICS = \u03c1_mag/\u03c1_rad. At higher energies... very high-energy electrons tend to lose a large fraction of their energy through synchrotron rather than inverse Compton scattering.\""
     },
     {
       "id": "c15",
@@ -481,7 +621,12 @@
       "bib_title": "Particle Cosmology and Astrophysics",
       "title_match": "not_found",
       "title_similarity": 0.0,
-      "source": "not_found"
+      "source": "not_found",
+      "deep_score": 10,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Textbook explicitly confirms b_syn \u221d B\u00b2E_e\u00b2, the \u03c1_mag/\u03c1_rad ratio determining which mechanism dominates, and KN suppression causing synchrotron to dominate at the highest electron energies.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"the energy-loss rates from synchrotron and inverse Compton scattering each scale as dE_e/dt \u221d E_e\u00b2, leading to a ratio (dE_e/dt)_syn/(dE_e/dt)_ICS = \u03c1_mag/\u03c1_rad. At higher energies... very high-energy electrons tend to lose a large fraction of their energy through synchrotron rather than inverse Compton scattering.\""
     },
     {
       "id": "c16",
@@ -497,7 +642,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c17",
@@ -513,7 +663,12 @@
       "bib_title": "The nature of the Diffuse Gamma-Ray Background",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Abstract directly supports both the 80% photon fraction claim and cosmic ray interaction mechanism with concrete data.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c18",
@@ -529,7 +684,12 @@
       "bib_title": "Cosmic-ray propagation and interactions in the Galaxy",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c19",
@@ -545,7 +705,12 @@
       "bib_title": "From gamma rays to radio waves: Dark Matter searches across the spectrum",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Thesis explicitly states that outside the Galactic Plane ICS is the dominant loss mechanism above ~40 MeV, directly supporting the claim about ICS overtaking bremsstrahlung at high latitudes.",
+      "deep_source": "notebooklm",
+      "deep_nlm_evidence": "\"For e\u00b1 energies above approximately 40 MeV, the ICS emission is the dominant loss mechanism. Therefore, lines of sight that avoid the Galactic Plane, at high latitudes, are preferred...\""
     },
     {
       "id": "c20",
@@ -561,7 +726,12 @@
       "bib_title": "Dark Matter",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Content directly supports the claim; minor figure numbering discrepancy (Figure 6.7 vs claimed 7.1) does not diminish the accuracy of the scientific reference.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c21",
@@ -577,7 +747,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c22",
@@ -593,7 +768,12 @@
       "bib_title": "The spectrum of isotropic diffuse gamma-ray emission\n                   between 100 MeV and 820 GeV",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": null,
+      "deep_verdict": "skipped",
+      "deep_reason": null,
+      "deep_source": "skipped",
+      "deep_nlm_evidence": null
     },
     {
       "id": "c23",
@@ -609,7 +789,12 @@
       "bib_title": "The nature of the Diffuse Gamma-Ray Background",
       "title_match": "ok",
       "title_similarity": 1.0,
-      "source": "inspire_arxiv"
+      "source": "inspire_arxiv",
+      "deep_score": 9,
+      "deep_verdict": "confirmed",
+      "deep_reason": "Paper directly states that GDE modeling uncertainty ranges 15-30% and is largest systematic error in gamma-ray astrophysics.",
+      "deep_source": "arxiv_pdf",
+      "deep_nlm_evidence": null
     }
   ]
 }
