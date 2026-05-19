@@ -229,7 +229,7 @@ def _augment(rec: dict, *, bibkey: str, bib_title: str, source: str) -> dict:
             "title_match": _classify_title_match(sim),
             "title_similarity": round(sim, 3),
             "source": source,
-            "fetched_at": datetime.datetime.utcnow().isoformat() + "Z",
+            "fetched_at": datetime.datetime.now(datetime.UTC).isoformat(),
         }
     )
     return rec
@@ -267,7 +267,7 @@ def _empty_record(
         "title_match": source,  # "not_found" or "fetch_error"
         "title_similarity": 0.0,
         "source": source,
-        "fetched_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "fetched_at": datetime.datetime.now(datetime.UTC).isoformat(),
     }
     if errors:
         rec["fetch_errors"] = errors
