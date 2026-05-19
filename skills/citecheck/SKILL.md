@@ -17,16 +17,6 @@ title-mismatched citations for manual review.
   `--no-arxiv-fallback`, `--cross-check`,
   `--batch-size <n>` (default 15), `--parallel <n>` (default 8).
 
-All scripts live under the plugin's `skills/citecheck/scripts/` directory.
-At the start of every bash block, set the `SCRIPTS` variable so the commands
-work whether the skill was loaded from a plugin or from the local
-`.claude/skills/citecheck/` checkout:
-
-```bash
-SCRIPTS="${CLAUDE_PLUGIN_ROOT:+$CLAUDE_PLUGIN_ROOT/skills/citecheck/scripts}"
-SCRIPTS="${SCRIPTS:-.claude/skills/citecheck/scripts}"
-```
-
 All outputs are written under `.citecheck/` and `.citecache/` rooted at the
 current working directory.
 
@@ -46,14 +36,14 @@ start the next file until the current one completes. Print
    ```bash
    rm -rf .citecheck/.tmp
    mkdir -p .citecheck/.tmp
-   python3 ${SCRIPTS}/parse_bib.py \
+   citecheck-parse-bib \
        <bib_path> .citecheck/.tmp/bib_index.json
    ```
 
 3. **Extract citations.**
 
    ```bash
-   python3 ${SCRIPTS}/extract_citations.py \
+   citecheck-extract-citations \
        <tex_file> .citecheck/.tmp/citations.json
    ```
 
@@ -72,7 +62,7 @@ start the next file until the current one completes. Print
    - cache hit with any other source → re-fetch only when `--refresh` is passed.
 
    ```bash
-   python3 ${SCRIPTS}/compute_missing.py \
+   citecheck-compute-missing \
        --citations .citecheck/.tmp/citations.json \
        --bib-index .citecheck/.tmp/bib_index.json \
        --cache-dir .citecache/abstracts \
@@ -83,7 +73,7 @@ start the next file until the current one completes. Print
 5. **Fetch missing abstracts.**
 
    ```bash
-   python3 ${SCRIPTS}/fetch_abstracts.py \
+   citecheck-fetch-abstracts \
        --missing .citecheck/.tmp/missing_keys.json \
        --cache-dir .citecache/abstracts \
        --parallel <parallel> \
@@ -93,7 +83,7 @@ start the next file until the current one completes. Print
 6. **Build batches.**
 
    ```bash
-   python3 ${SCRIPTS}/build_batches.py \
+   citecheck-build-batches \
        --citations .citecheck/.tmp/citations.json \
        --bib-index .citecheck/.tmp/bib_index.json \
        --abstracts-dir .citecache/abstracts \
@@ -127,7 +117,7 @@ start the next file until the current one completes. Print
 9. **Collate report.**
 
    ```bash
-   python3 ${SCRIPTS}/collate_report.py \
+   citecheck-collate-report \
        --citations .citecheck/.tmp/citations.json \
        --scores-dir .citecheck/.tmp/ \
        --abstracts-dir .citecache/abstracts \
@@ -141,13 +131,7 @@ start the next file until the current one completes. Print
 11. **Print per-file summary.** Read the report JSON (a dict, not a list) and print one line:
 
     ```bash
-    python3 -c "
-    import json, sys
-    d = json.load(open('.citecheck/<basename>.json'))
-    needing = d['scored_low'] + d['scored_borderline']
-    title_issues = len(d['title_match_issues'])
-    print(f\"{d['total_citations']} citations · {needing} needing review · {title_issues} title-match issues · report at .citecheck/<basename>.md\")
-    "
+    citecheck-print-summary .citecheck/<basename>.json
     ```
 
 12. **Combined summary (multi-file only).** After all files are processed,
