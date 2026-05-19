@@ -14,15 +14,6 @@ books/non-indexed sources and escalations.
 - `tex_file` — absolute path to the `.tex` file (same one used with `/citecheck`).
 - Optional flags: `--bib <path>`, `--refresh`, `--threshold <n>` (default 6).
 
-## Script paths
-
-```bash
-SCRIPTS_CITECHECK="${CLAUDE_PLUGIN_ROOT:+$CLAUDE_PLUGIN_ROOT/skills/citecheck/scripts}"
-SCRIPTS_CITECHECK="${SCRIPTS_CITECHECK:-.claude/skills/citecheck/scripts}"
-SCRIPTS="${CLAUDE_PLUGIN_ROOT:+$CLAUDE_PLUGIN_ROOT/skills/citecheck-deep/scripts}"
-SCRIPTS="${SCRIPTS:-.claude/skills/citecheck-deep/scripts}"
-```
-
 ## Steps
 
 1. **Resolve basename and report path.**
@@ -63,13 +54,13 @@ SCRIPTS="${SCRIPTS:-.claude/skills/citecheck-deep/scripts}"
 
    ```bash
    mkdir -p .citecheck/.tmp
-   python3 ${SCRIPTS_CITECHECK}/parse_bib.py <bib_path> .citecheck/.tmp/bib_index.json
+   citecheck-parse-bib <bib_path> .citecheck/.tmp/bib_index.json
    ```
 
 5. **Select candidates.**
 
    ```bash
-   python3 ${SCRIPTS}/select_candidates.py \
+   citecheck-deep-select-candidates \
        --report "${REPORT}" \
        --bib-index .citecheck/.tmp/bib_index.json \
        --threshold ${THRESHOLD} \
@@ -198,7 +189,7 @@ SCRIPTS="${SCRIPTS:-.claude/skills/citecheck-deep/scripts}"
     merge step (last entry with the same id wins).
 
     ```bash
-    python3 ${SCRIPTS}/collate_deep_report.py \
+    citecheck-deep-collate-report \
         --report "${REPORT}" \
         --deep-verdicts .citecheck/.tmp/deep_verdicts.json \
         --output-md "${MD}"
@@ -213,7 +204,7 @@ SCRIPTS="${SCRIPTS:-.claude/skills/citecheck-deep/scripts}"
 12. **Print summary.**
 
     ```bash
-    python3 ${SCRIPTS}/summarize_deep_report.py \
+    citecheck-deep-summarize \
         --report "${REPORT}" \
         --md "${MD}"
     ```
