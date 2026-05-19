@@ -11,6 +11,20 @@ to flag mistakenly inserted or hallucinated references.
 /plugin install citecheck@citecheck-plugin
 ```
 
+### Reduce permission prompts
+
+After installing, add this to your project's `.claude/settings.json` to auto-approve all citecheck script invocations:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(citecheck-* *)"
+    ]
+  }
+}
+```
+
 ## Use
 
 ```
